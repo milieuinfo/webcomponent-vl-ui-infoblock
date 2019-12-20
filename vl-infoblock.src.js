@@ -4,11 +4,12 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 /**
  * VlInfoblock
  * @class
- * @classdesc 
+ * @classdesc Gebruik de infoblock om een sectie met een nieuwe content te starten.
  * 
  * @extends VlElement
  * 
- * @property 
+ * @property {string} title - Attribuut dat wordt gebruikt om de titel van de infoblock te zetten.
+ * @property {string} icon -  Attribuut dat wordt gebruikt om een icoon vooraan aan de titel toe te voegen. Het icoon kan gekozen worden uit de lijst op https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-icon.
  * 
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-infoblock/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-infoblock/issues|Issues}
@@ -56,7 +57,6 @@ export class VlInfoblock extends VlElement(HTMLElement) {
     get _iconElement() {
         return this._element.querySelector('#infoblock_icon');
     }
-
 }
 
 define('vl-infoblock', VlInfoblock);
