@@ -12,7 +12,13 @@
 <body>
   <test-fixture id="vl-infoblock-fixture">
     <template>
-      
+      <vl-infoblock></vl-infoblock>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="vl-infoblock-fixture-volledig-ingevuld">
+    <template>
+      <vl-infoblock titel="De Titel" icon="bus">Dit is de content van de infoblock</vl-infoblock>
     </template>
   </test-fixture>
 
@@ -20,9 +26,49 @@
     suite('vl-infoblock', () => {
       const should = chai.should();
 
-      test('vl-infoblock test', () => {
-        const fixture = fixture('vl-infoblock-fixture');
-        assert.isTrue(true);
+      test('de titel is ingevuld als het titel attribuut wordt ingevuld', () => {
+        const infoblock = fixture('vl-infoblock-fixture');
+        
+        let title = infoblock.shadowRoot.querySelector("#infoblock_title");
+        expect(title.textContent).to.be.empty;
+        
+        const titel = 'Dit is een titel';
+        infoblock.setAttribute('titel', titel);
+        title = infoblock.shadowRoot.querySelector("#infoblock_title");
+        title.textContent.should.equal(titel);
+      });
+
+      test('een icoon wordt toegevoegd als het icon attribuut wordt ingevuld', () => {
+        const infoblock = fixture('vl-infoblock-fixture');
+        
+        let infoblockIcon = infoblock.shadowRoot.querySelector("#infoblock_icon");
+        expect(infoblockIcon.getAttribute('icon')).to.not.exist;
+        
+        const icon = 'bus'; 
+        infoblock.setAttribute('icon', icon);
+        infoblockIcon = infoblock.shadowRoot.querySelector("#infoblock_icon");
+        expect(infoblockIcon.getAttribute('icon')).to.equal(icon);
+      });
+
+      test('Elementen binnen een infoblock tags worden correct aan het slot toegevoegd', () => {
+        const infoblock = fixture('vl-infoblock-fixture');
+
+        let infoblockContent = infoblock.shadowRoot.querySelector("#infoblock_content slot");
+        expect(infoblockContent.assignedElements()).to.be.empty;
+        
+        const content = document.createElement('span');
+        content.innerText = "Dit is content";
+        infoblock.appendChild(content);
+        infoblockContent = infoblock.shadowRoot.querySelector("#infoblock_content slot");
+        expect(infoblockContent.assignedElements()[0]).to.equal(content);
+      });
+
+      test('Een volledig ingevulde infoblock wordt correct weergegeven', () => {
+        const infoblock = fixture('vl-infoblock-fixture-volledig-ingevuld');
+        expect(infoblock.shadowRoot.querySelector("#infoblock_title").textContent).to.equal('De Titel');
+        expect(infoblock.shadowRoot.querySelector("#infoblock_icon").getAttribute('icon')).to.equal('bus');
+        expect(infoblock.shadowRoot.querySelector("#infoblock_content slot").assignedNodes()[0].textContent)
+              .to.equal('Dit is de content van de infoblock');
       });
     });
   </script>
