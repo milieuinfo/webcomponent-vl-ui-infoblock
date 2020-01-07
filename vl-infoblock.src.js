@@ -10,7 +10,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
  * 
  * @property {string} title - Attribuut dat wordt gebruikt om de titel van de infoblock te zetten.
  * @property {string} icon -  Attribuut dat wordt gebruikt om een icoon vooraan aan de titel toe te voegen. Het icoon kan gekozen worden uit de lijst op https://overheid.vlaanderen.be/webuniversum/v3/documentation/atoms/vl-ui-icon.
- * @property {string} type -  
+ * @property {string} type -  Er kan een vast icoon gekozen worden (contact, publications, faq, news, timeline, question)
  * 
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-infoblock/releases/latest|Release notes}
  * @see {@link https://www.github.com/milieuinfo/webcomponent-vl-ui-infoblock/issues|Issues}
@@ -20,7 +20,7 @@ import '/node_modules/vl-ui-icon/vl-icon.js';
 export class VlInfoblock extends VlElement(HTMLElement) {
 
     static get _observedAttributes() {
-        return ['titel', 'icon', 'type'];
+        return ['title', 'icon', 'type'];
     }
 
     constructor() {
@@ -43,7 +43,7 @@ export class VlInfoblock extends VlElement(HTMLElement) {
             `);
     }
 
-    _titelChangedCallback(oldValue, newValue) {
+    _titleChangedCallback(oldValue, newValue) {
         this._titleElement.innerText = newValue;
     }
 

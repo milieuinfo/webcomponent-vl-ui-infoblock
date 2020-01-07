@@ -18,13 +18,13 @@
 
   <test-fixture id="vl-infoblock-fixture-volledig-ingevuld">
     <template>
-      <vl-infoblock titel="De Titel" icon="bus">Dit is de content van de infoblock</vl-infoblock>
+      <vl-infoblock title="De Titel" icon="bus">Dit is de content van de infoblock</vl-infoblock>
     </template>
   </test-fixture>
 
   <test-fixture id="vl-infoblock-fixture-met-type">
     <template>
-      <vl-infoblock titel="De Titel" type="contacts">Dit is de content van de infoblock</vl-infoblock>
+      <vl-infoblock title="De Titel" type="contacts">Dit is de content van de infoblock</vl-infoblock>
     </template>
   </test-fixture>
 
@@ -39,7 +39,7 @@
         expect(title.textContent).to.be.empty;
         
         const titel = 'Dit is een titel';
-        infoblock.setAttribute('titel', titel);
+        infoblock.setAttribute('title', titel);
         title = infoblock.shadowRoot.querySelector("#infoblock_title");
         title.textContent.should.equal(titel);
       });
