@@ -28,6 +28,15 @@
     </template>
   </test-fixture>
 
+  <test-fixture id="vl-infoblock-fixture-met-title-slot">
+    <template>
+      <vl-infoblock type="contacts">
+        <span slot='title'>De Titel</span>
+        Dit is de content van de infoblock
+      </vl-infoblock>
+    </template>
+  </test-fixture>
+
   <script>
     suite('vl-infoblock', () => {
       const should = chai.should();
@@ -103,7 +112,22 @@
         expect(infoblock.shadowRoot.querySelector("#infoblock-element").classList.contains('vl-infoblock')).to.be.true;
         expect(infoblock.shadowRoot.querySelector("#infoblock-element").classList.contains('vl-infoblock--contacts')).to.be.true;
         expect(infoblock.shadowRoot.querySelector("#infoblock_content slot").assignedNodes()[0].textContent).to.equal('Dit is de content van de infoblock');
+        
       });
+      
+      test('De titel wordt correct gerenderd via een slot', () => {
+        const infoblock = fixture('vl-infoblock-fixture-met-title-slot');
+        expect(infoblock.shadowRoot.querySelector('slot[name="title"]')).to.exist;
+        expect(infoblock.shadowRoot.querySelector('slot[name="title"]').assignedNodes()[0].textContent).to.equal('De Titel');
+      });
+      
+      test('Het title slot bestaat niet als de titel via een attribuut gezet wordt', () => {
+        const infoblock = fixture('vl-infoblock-fixture-met-type');
+        expect(infoblock.shadowRoot.querySelector('slot[name="title"]')).to.not.exist;
+      });
+    
+    
+    
     });
   </script>
 </body>

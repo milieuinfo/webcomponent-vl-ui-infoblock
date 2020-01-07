@@ -34,7 +34,7 @@ export class VlInfoblock extends VlElement(HTMLElement) {
                 <section id="infoblock-element" class="vl-infoblock">
                     <header class="vl-infoblock__header" role="presentation">
                         <span is="vl-icon" id="infoblock_icon" class="vl-infoblock__header__icon"></span>
-                        <h2 class="vl-infoblock__title" id="infoblock_title"></h2>
+                        <h2 class="vl-infoblock__title" id="infoblock_title"><slot name='title'></slot></h2>
                     </header>
                     <div class="vl-infoblock__content" id="infoblock_content">
                        <slot></slot>

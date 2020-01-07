@@ -102,5 +102,41 @@
             </div>
         </div>
 
+        <div>
+            <h2>Infoblock titel via attribuut doorgeven</h2>
+            <p>Voeg het attribuut <strong>type</strong> met waarde <strong>contact</strong> om een adresboek icoon te tonen.</p>
+            <pre>
+                <code class="line-numbers language-markup">
+                    &lt;vl-infoblock title=&quot;Titel via title attribuut&quot; type=&quot;contact&quot;&gt;
+                       Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.
+                    &lt;/vl-infoblock&gt;
+                </code>
+            </pre>
+            <div class="demo">
+                <vl-infoblock title='Titel via title attribuut' type="contact">
+                    Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.
+                </vl-infoblock>
+            </div>
+        </div>
+
+        <div>
+            <h2>Infoblock titel via slot doorgeven</h2>
+            <p>Voeg het attribuut <strong>type</strong> met waarde <strong>contact</strong> om een adresboek icoon te tonen.</p>
+            <pre>
+                <code class="line-numbers language-markup">
+                    &lt;vl-infoblock title=&quot;Contactenlijst&quot; type=&quot;contact&quot;&gt;
+                      &lt;span slot=&quot;title&quot;&gt;Titel via slot&lt;/span&gt;
+                      Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.
+                    &lt;/vl-infoblock&gt;
+                </code>
+            </pre>
+            <div class="demo">
+                <vl-infoblock type="contact">
+                    <span slot='title'>Titel via slot</span>
+                    Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.
+                </vl-infoblock>
+            </div>
+        </div>
+
     </body>
 </html>
