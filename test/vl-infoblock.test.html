@@ -22,6 +22,12 @@
     </template>
   </test-fixture>
 
+  <test-fixture id="vl-infoblock-fixture-met-type">
+    <template>
+      <vl-infoblock titel="De Titel" type="contacts">Dit is de content van de infoblock</vl-infoblock>
+    </template>
+  </test-fixture>
+
   <script>
     suite('vl-infoblock', () => {
       const should = chai.should();
@@ -69,6 +75,34 @@
         expect(infoblock.shadowRoot.querySelector("#infoblock_icon").getAttribute('icon')).to.equal('bus');
         expect(infoblock.shadowRoot.querySelector("#infoblock_content slot").assignedNodes()[0].textContent)
               .to.equal('Dit is de content van de infoblock');
+      });
+
+
+      test('Via het type attribuut is het mogelijk om vooraf gedefinieerde iconen te tonen.', () => {
+        const infoblock = fixture('vl-infoblock-fixture');
+
+        var typeInfoBlock = 'contacts';
+        var typeInfoBlockClass = 'vl-infoblock--' + typeInfoBlock;
+
+        let infoblockElement = infoblock.shadowRoot.querySelector("#infoblock-element");
+        expect(infoblockElement.getAttribute('type')).to.not.exist;
+        expect(infoblockElement.classList.contains('vl-infoblock')).to.be.true;
+        expect(infoblockElement.classList.contains(typeInfoBlockClass)).to.be.false;
+
+        infoblock.setAttribute('type', typeInfoBlock);
+        
+        infoblockElement = infoblock.shadowRoot.querySelector("#infoblock-element");
+        expect(infoblockElement.classList.contains('vl-infoblock')).to.be.true;
+        expect(infoblockElement.classList.contains(typeInfoBlockClass)).to.be.true;
+      });
+
+      test('Een volledig ingevulde infoblock met een type wordt correct weergegeven', () => {
+        const infoblock = fixture('vl-infoblock-fixture-met-type');
+
+        expect(infoblock.shadowRoot.querySelector("#infoblock_title").textContent).to.equal('De Titel');
+        expect(infoblock.shadowRoot.querySelector("#infoblock-element").classList.contains('vl-infoblock')).to.be.true;
+        expect(infoblock.shadowRoot.querySelector("#infoblock-element").classList.contains('vl-infoblock--contacts')).to.be.true;
+        expect(infoblock.shadowRoot.querySelector("#infoblock_content slot").assignedNodes()[0].textContent).to.equal('Dit is de content van de infoblock');
       });
     });
   </script>
