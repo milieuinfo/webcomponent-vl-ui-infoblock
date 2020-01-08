@@ -26,12 +26,10 @@
   },
   "homepage": "https://github.com/milieuinfo/webcomponent-vl-infoblock#readme",
   "dependencies": {
-    "vl-ui-util": "^2.0.5",
     "vl-ui-core": "^2.0.0",
     "vl-ui-icon": "^2.1.1"
   },
   "peerDependencies": {
-    "vl-ui-util": "^2.0.5",
     "vl-ui-core": "^2.0.0",
     "vl-ui-icon": "^2.1.1"
   },
