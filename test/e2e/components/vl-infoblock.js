@@ -1,63 +1,59 @@
 const { VlElement } = require('vl-ui-core');
 const { VlIcon } = require('vl-ui-icon');
+const { By } = require('selenium-webdriver');
 
 class VlInfoblock extends VlElement {
-    constructor(driver, selector) {
-        super(driver, selector);
-    }
-
-    async getText() {
-        const element = await this._getContent();
-        return this.driver.executeScript('return arguments[0].innerText', element);
-    }
-
     async getTitle() {
-        const element = await this._getContent();
-        const slots = await element.findElements(By.css('[slot]'));
-        if (slots.length > 0) {
-            return this.getText();
-        } else {
-            return this.getAttribute('title');
-        }
+        return (await this._getTitle()).getText();
+    }
+
+    async getContent() {
+        return await this._getContent();
+    }
+    
+    async getIcon() {
+        return new VlIcon(this.driver, await this._getIcon());
+    }
+
+    async getType() {
+        return this.getAttribute('type');
+    }
+
+    async isContact() {
+        return (await this.getType()) == 'contact';
+    }
+
+    async isPublication() {
+        return (await this.getType()) == 'publications';
+    }
+
+    async isFaq() {
+        return (await this.getType()) == 'faq';
+    }
+
+    async isNews() {
+        return (await this.getType()) == 'news';
+    }
+
+    async isTimeline() {
+        return (await this.getType()) == 'timeline';
+    }
+
+    async isQuestion() {
+        return (await this.getType()) == 'question';
+    }
+
+    async _getTitle() {
+        return await this.shadowRoot.findElement(By.css('#infoblock_title'));
     }
 
     async _getContent() {
         return await this.shadowRoot.findElement(By.css('#infoblock_content'));
     }
 
-    async _getType() {
-        return this.getAttribute('type');
+    async _getIcon() {
+        return await this.shadowRoot.findElement(By.css('[is="vl-icon"]'));
     }
-
-    async isContact() {
-        return (await this._getType()) == 'contact';
-    }
-
-    async isPublication() {
-        return (await this._getType()) == 'publications';
-    }
-
-    async isFaq() {
-        return (await this._getType()) == 'faq';
-    }
-
-    async isNews() {
-        return (await this._getType()) == 'news';
-    }
-
-    async isTimeline() {
-        return (await this._getType()) == 'timeline';
-    }
-
-    async isQuestion() {
-        return (await this._getType()) == 'question';
-    }
-
-    async isCalendar() {
-        return (await this.getAttribute('icon')) == 'calendar';
-    }
-
-
 }
 
 module.exports = VlInfoblock;
