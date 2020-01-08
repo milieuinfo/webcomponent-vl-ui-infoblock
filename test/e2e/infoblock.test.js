@@ -9,8 +9,12 @@ describe('vl-infoblock', async () => {
         return vlInfoblockPage.load();
     });
 
-    
-    after(() => {
-        driver && driver.quit();
-    });
+    it('ik kan een custom icon kiezen', async () => {
+        const customIconBlock = await vlInfoblockPage.getCustomIconBlock();
+
+        await assert.eventually.isFalse(customIconBlock.hasAttribute('type'));
+        await assert.eventually.isTrue(customIconBlock.hasAttribute('icon'));
+        await assert.eventually.isTrue(customIconBlock.isCalendar());
+    }); 
+
 });
