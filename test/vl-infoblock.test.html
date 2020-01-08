@@ -90,8 +90,8 @@
       test('Via het type attribuut is het mogelijk om vooraf gedefinieerde iconen te tonen.', () => {
         const infoblock = fixture('vl-infoblock-fixture');
 
-        var typeInfoBlock = 'contacts';
-        var typeInfoBlockClass = 'vl-infoblock--' + typeInfoBlock;
+        const typeInfoBlock = 'contacts';
+        const typeInfoBlockClass = 'vl-infoblock--' + typeInfoBlock;
 
         let infoblockElement = infoblock.shadowRoot.querySelector("#infoblock-element");
         expect(infoblockElement.getAttribute('type')).to.not.exist;
@@ -124,10 +124,34 @@
       test('Het title slot bestaat niet als de titel via een attribuut gezet wordt', () => {
         const infoblock = fixture('vl-infoblock-fixture-met-type');
         expect(infoblock.shadowRoot.querySelector('slot[name="title"]')).to.not.exist;
+      });   
+
+      test('Wanneer het type wijzigt, mag de oude class niet meer beschikbaar zijn', () => {
+        const infoblock = fixture('vl-infoblock-fixture-met-type');
+
+        const typeClassPrefix = 'vl-infoblock--';
+        const nieuwType = 'publishers';
+
+        infoblock.setAttribute('type', nieuwType);
+
+        let infoblockElement = infoblock.shadowRoot.querySelector("#infoblock-element");
+        expect(infoblockElement.classList.contains(typeClassPrefix + nieuwType)).to.be.true;
+        expect(infoblockElement.classList.contains(typeClassPrefix + 'contacts')).to.be.false;
+      }); 
+
+      test('Wanneer type wordt verwijderd, mag de class niet meer aanwezig zijn', () => {
+
+        const infoblock = fixture('vl-infoblock-fixture-met-type');
+        const typeClassPrefix = 'vl-infoblock--';
+
+
+        infoblock.removeAttribute('type');
+
+        let infoblockElement = infoblock.shadowRoot.querySelector("#infoblock-element");
+        expect(infoblockElement.classList.contains(typeClassPrefix + 'contacts')).to.be.false;
+        expect(infoblockElement.classList.contains(typeClassPrefix)).to.be.false;
+        expect(infoblockElement.classList.contains(typeClassPrefix+null)).to.be.false;
       });
-    
-    
-    
     });
   </script>
 </body>

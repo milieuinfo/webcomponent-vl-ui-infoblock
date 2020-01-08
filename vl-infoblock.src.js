@@ -52,8 +52,13 @@ export class VlInfoblock extends VlElement(HTMLElement) {
     }
 
     _typeChangedCallback(oldValue, newValue) {
-        var extraClass='vl-infoblock--' + newValue;
-        this._element.classList.add(extraClass);
+        const classPrefix = 'vl-infoblock--';
+        if (oldValue) {
+            this._element.classList.remove(classPrefix + oldValue);
+        }
+        if (newValue) {
+            this._element.classList.add(classPrefix + newValue);
+        }
     }
 
     get _titleElement() {
