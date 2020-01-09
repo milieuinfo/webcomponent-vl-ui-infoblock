@@ -1,6 +1,6 @@
 {
   "name": "vl-ui-infoblock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gebruik een infoblock component om een nieuwe sectie te starten.",
   "scripts": {
     "prepare": "npm update --dev vl-ui-util && npm run prepare:util",
