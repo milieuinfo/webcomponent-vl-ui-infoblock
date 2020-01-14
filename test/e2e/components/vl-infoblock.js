@@ -10,7 +10,11 @@ class VlInfoblock extends VlElement {
     async getContent() {
         return await this._getContent();
     }
-    
+
+    async getText() {
+        return this.driver.executeScript('return arguments[0].textContent', this);
+    }
+
     async getIcon() {
         return new VlIcon(this.driver, await this._getIcon());
     }

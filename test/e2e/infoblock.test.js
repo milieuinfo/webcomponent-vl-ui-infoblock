@@ -16,7 +16,7 @@ describe('vl-infoblock', async () => {
 
     it('als gebruiker kan ik de content van een infoblock zien', async() => {
         const iconblock = await vlInfoblockPage.getContactBlock();
-        await assert.eventually.equal((await iconblock.getContent()).getText(), 'Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.');
+        await assert.eventually.equal(iconblock.getText(), 'Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.');
     });
     it('als gebruiker kan ik een infoblock van type contacten herkennen', async() => {
         const iconblock = await vlInfoblockPage.getContactBlock();
