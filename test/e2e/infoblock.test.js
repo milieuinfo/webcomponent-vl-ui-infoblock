@@ -55,4 +55,8 @@ describe('vl-infoblock', async () => {
         await assert.eventually.isNull(iconblock.getType());
     });
 
+    after(() => {
+        return driver.quit();
+    })
+
 });
