@@ -5,8 +5,9 @@ const VlInfoblockPage = require('./pages/vl-infoblock.page');
 describe('vl-infoblock', async () => {
     const vlInfoblockPage = new VlInfoblockPage(driver);
 
-    before(() => {
-        return vlInfoblockPage.load();
+    before((done) => {
+        vlInfoblockPage.load();
+        done();
     });
 
     it('als gebruiker kan ik de titel van een infoblock zien', async() => {
@@ -55,8 +56,9 @@ describe('vl-infoblock', async () => {
         await assert.eventually.isNull(iconblock.getType());
     });
 
-    after(() => {
-        return driver.quit();
+    after((done) => {
+        driver.quit();
+        done();
     })
 
 });
