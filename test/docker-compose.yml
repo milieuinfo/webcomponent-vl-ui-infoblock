@@ -1,10 +1,10 @@
 version: "3"
 services:
   selenium-hub:
-    image: ${DOCKER_REGISTRY}selenium/hub:3.141.59-zinc
+    image: ${DOCKER_REGISTRY}selenium/hub:3.141.59
     container_name: selenium-hub
   selenium-chrome:
-    image: ${DOCKER_REGISTRY}selenium/node-chrome-debug:3.141.59-zinc
+    image: ${DOCKER_REGISTRY}selenium/node-chrome-debug:3.141.59
     depends_on:
       - selenium-hub
     environment:
@@ -16,7 +16,7 @@ services:
     ports:
       - 5900:5900
   selenium-firefox:
-    image: ${DOCKER_REGISTRY}selenium/node-firefox-debug:3.141.59-zinc
+    image: ${DOCKER_REGISTRY}selenium/node-firefox-debug:3.141.59
     depends_on:
       - selenium-hub
     environment:

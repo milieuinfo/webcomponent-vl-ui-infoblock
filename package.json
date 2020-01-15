@@ -41,11 +41,11 @@
   "homepage": "https://github.com/milieuinfo/webcomponent-vl-ui-infoblock#readme",
   "dependencies": {
     "chromedriver": "^79.0.0",
-    "vl-ui-core": "^3.1.0",
+    "vl-ui-core": "github:milieuinfo/webcomponent-vl-ui-core#mocha-after-fix",
     "vl-ui-icon": "^2.1.1"
   },
   "peerDependencies": {
-    "vl-ui-core": "^3.0.1",
+    "vl-ui-core": "github:milieuinfo/webcomponent-vl-ui-core#mocha-after-fix",
     "vl-ui-icon": "^2.1.1"
   },
   "devDependencies": {
