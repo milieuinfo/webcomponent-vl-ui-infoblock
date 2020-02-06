@@ -1,4 +1,4 @@
-const { VlElement } = require('vl-ui-core');
+const { VlElement } = require('vl-ui-core').Test;
 const { VlIcon } = require('vl-ui-icon');
 const { By } = require('selenium-webdriver');
 
