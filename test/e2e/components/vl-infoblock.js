@@ -1,5 +1,5 @@
 const { VlElement } = require('vl-ui-core').Test;
-const { VlIcon } = require('vl-ui-icon');
+const { VlIcon } = require('vl-ui-icon').Test;
 const { By } = require('selenium-webdriver');
 
 class VlInfoblock extends VlElement {
