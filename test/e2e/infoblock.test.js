@@ -1,5 +1,5 @@
 
-const { assert, driver } = require('vl-ui-core').Test;
+const { assert, driver } = require('vl-ui-core').Test.Setup;
 const VlInfoblockPage = require('./pages/vl-infoblock.page');
 
 describe('vl-infoblock', async () => {
@@ -18,6 +18,7 @@ describe('vl-infoblock', async () => {
         const iconblock = await vlInfoblockPage.getContactBlock();
         await assert.eventually.equal(iconblock.getText(), 'Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.');
     });
+
     it('als gebruiker kan ik een infoblock van type contacten herkennen', async() => {
         const iconblock = await vlInfoblockPage.getContactBlock();
         await assert.eventually.isTrue(iconblock.isContact());
@@ -54,12 +55,4 @@ describe('vl-infoblock', async () => {
         await assert.eventually.equal(icon.getIcon(), 'calendar');
         await assert.eventually.isNull(iconblock.getType());
     });
-
-    after((done) => {
-        if(driver) {
-            driver.quit();
-            done();
-        }
-    });
-
 });
