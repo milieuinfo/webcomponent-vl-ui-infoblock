@@ -1,3 +1,3 @@
 module.exports = { 
-    VlInfoblock: require('../vl-infoblock.src.js').VlInfoblock
-}
+    VlInfoblock: require('../dist/vl-infoblock.src.js').VlInfoblock
+};
