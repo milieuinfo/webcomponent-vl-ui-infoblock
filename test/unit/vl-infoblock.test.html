@@ -44,20 +44,20 @@
       test('de titel is ingevuld als het titel attribuut wordt ingevuld', () => {
         const infoblock = fixture('vl-infoblock-fixture');
         
-        let title = infoblock.shadowRoot.querySelector("#infoblock_title slot").assignedElements();
-        expect(title).to.be.empty;
+        let titleSlotElements = infoblock.shadowRoot.querySelector("#infoblock_title slot").assignedElements();
+        expect(titleSlotElements).to.be.empty;
         
-        const titel = 'Dit is een titel';
-        infoblock.setAttribute('title', titel);
-        title = infoblock.shadowRoot.querySelector("#infoblock_title slot").assignedElements();
-        title[0].textContent.should.equal(titel);
-        title.length.should.equal(1);
+        let text = 'Dit is een titel';
+        infoblock.setAttribute('title', text);
+        titleSlotElements = infoblock.shadowRoot.querySelector("#infoblock_title slot").assignedElements();
+        titleSlotElements[0].textContent.should.equal(text);
+        titleSlotElements.length.should.equal(1);
 
-        const titel2 = 'Dit is een andere titel';
-        infoblock.setAttribute('title', titel2);
-        title = infoblock.shadowRoot.querySelector("#infoblock_title slot").assignedElements();
-        title[0].textContent.should.equal(titel2);
-        title.length.should.equal(1);
+        text = 'Dit is een andere titel';
+        infoblock.setAttribute('title', text);
+        titleSlotElements = infoblock.shadowRoot.querySelector("#infoblock_title slot").assignedElements();
+        titleSlotElements[0].textContent.should.equal(text);
+        titleSlotElements.length.should.equal(1);
       });
 
       test('een icoon wordt toegevoegd als het icon attribuut wordt ingevuld', () => {
