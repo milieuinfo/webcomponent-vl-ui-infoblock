@@ -11,12 +11,14 @@ describe('vl-infoblock', async () => {
 
     it('als gebruiker kan ik de titel van een infoblock zien', async() => {
         const iconblock = await vlInfoblockPage.getContactBlock();
-        await assert.eventually.equal(iconblock.getTitle(), 'Contactenlijst');
+        const title = await iconblock.getTitleSlotElements();
+        await assert.eventually.equal(title[0].getText(), 'Contactenlijst');
     });
 
     it('als gebruiker kan ik de content van een infoblock zien', async() => {
         const iconblock = await vlInfoblockPage.getContactBlock();
-        await assert.eventually.equal(iconblock.getText(), 'Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.');
+        const content = await iconblock.getContent();
+        assert.equal(content[0].textContent, 'Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.');
     });
 
     it('als gebruiker kan ik een infoblock van type contacten herkennen', async() => {
@@ -55,4 +57,11 @@ describe('vl-infoblock', async () => {
         await assert.eventually.equal(icon.getIcon(), 'calendar');
         await assert.eventually.isNull(iconblock.getType());
     });
+
+    it('als gebruiker kan ik een de titel van een info-block ook in een slot meegeven', async() => {
+        const iconblock = await vlInfoblockPage.getContactSlotBlock();
+        const title = await iconblock.getTitleSlotElements();
+        await assert.eventually.equal(title[0].getText(), 'Titel via slot');
+    });
+
 });

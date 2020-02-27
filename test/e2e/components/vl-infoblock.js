@@ -3,16 +3,15 @@ const { VlIcon } = require('vl-ui-icon').Test;
 const { By } = require('selenium-webdriver');
 
 class VlInfoblock extends VlElement {
-    async getTitle() {
-        return (await this._getTitle()).getText();
-    }
 
+	async getTitleSlotElements() {
+    	const titleSlot = await this._getTitleSlot();
+    	return await this.getAssignedElements(titleSlot);
+    }
+    
     async getContent() {
-        return await this._getContent();
-    }
-
-    async getText() {
-        return this.driver.executeScript('return arguments[0].textContent', this);
+    	const contentSlot = await this._getContentSlot();
+    	return await this.getAssignedNodes(contentSlot);
     }
 
     async getIcon() {
@@ -47,12 +46,12 @@ class VlInfoblock extends VlElement {
         return (await this.getType()) == 'question';
     }
 
-    async _getTitle() {
-        return await this.shadowRoot.findElement(By.css('#infoblock_title'));
+    async _getTitleSlot() {
+        return await this.shadowRoot.findElement(By.css('#infoblock_title slot'));
     }
 
-    async _getContent() {
-        return await this.shadowRoot.findElement(By.css('#infoblock_content'));
+    async _getContentSlot() {
+        return await this.shadowRoot.findElement(By.css('#infoblock_content slot'));
     }
 
     async _getIcon() {
