@@ -47,7 +47,7 @@ export class VlInfoblock extends VlElement(HTMLElement) {
     	if (currentSlot) {
     		currentSlot.remove();
     	}
-        this.append(this._template(`<span slot='title'>${newValue}</span>`));
+    	this.append(this._template(`<span slot='title'>${newValue}</span>`));
     }
 
     _iconChangedCallback(oldValue, newValue) {
