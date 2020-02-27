@@ -5,8 +5,8 @@ const { By } = require('selenium-webdriver');
 class VlInfoblock extends VlElement {
 
 	async getTitleSlotElements() {
-    	const titleSlot = await this._getTitleSlot();
-    	return await this.getAssignedElements(titleSlot);
+		const titleSlot = await this._getTitleSlot();
+		return await this.getAssignedElements(titleSlot);
     }
     
     async getContent() {
