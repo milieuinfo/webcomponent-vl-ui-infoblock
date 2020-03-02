@@ -6,12 +6,12 @@ class VlInfoblock extends VlElement {
 
 	async getTitleSlotElements() {
 		const titleSlot = await this._getTitleSlot();
-		return await this.getAssignedElements(titleSlot);
+		return this.getAssignedElements(titleSlot);
     }
     
-    async getContent() {
+    async getContentSlotNodes() {
     	const contentSlot = await this._getContentSlot();
-    	return await this.getAssignedNodes(contentSlot);
+    	return this.getAssignedNodes(contentSlot);
     }
 
     async getIcon() {
@@ -47,15 +47,15 @@ class VlInfoblock extends VlElement {
     }
 
     async _getTitleSlot() {
-        return await this.shadowRoot.findElement(By.css('#infoblock_title slot'));
+        return this.shadowRoot.findElement(By.css('#infoblock_title slot'));
     }
 
     async _getContentSlot() {
-        return await this.shadowRoot.findElement(By.css('#infoblock_content slot'));
+        return this.shadowRoot.findElement(By.css('#infoblock_content slot'));
     }
 
     async _getIcon() {
-        return await this.shadowRoot.findElement(By.css('[is="vl-icon"]'));
+        return this.shadowRoot.findElement(By.css('[is="vl-icon"]'));
     }
 }
 

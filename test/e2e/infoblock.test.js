@@ -17,7 +17,7 @@ describe('vl-infoblock', async () => {
 
     it('als gebruiker kan ik de content van een infoblock zien', async() => {
         const iconblock = await vlInfoblockPage.getContactBlock();
-        const content = await iconblock.getContent();
+        const content = await iconblock.getContentSlotNodes();
         assert.equal(content[0].textContent, 'Hieronder bevindt zich een overzicht van al uw contacten binnen de Vlaamse Overheid.');
     });
 
