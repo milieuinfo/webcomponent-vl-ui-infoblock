@@ -45,11 +45,11 @@
   },
   "dependencies": {
     "vl-ui-core": "^5.1.2",
-    "vl-ui-icon": "^4.0.0"
+    "vl-ui-icon": "^5.0.0"
   },
   "peerDependencies": {
     "vl-ui-core": "^5.0.2",
-    "vl-ui-icon": "^4.0.0"
+    "vl-ui-icon": "^5.0.0"
   },
   "devDependencies": {
     "@govflanders/vl-ui-infoblock": "3.9.1",
