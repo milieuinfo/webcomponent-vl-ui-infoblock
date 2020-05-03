@@ -51,7 +51,7 @@ export class VlInfoblock extends VlElement(HTMLElement) {
     }
 
     _iconChangedCallback(oldValue, newValue) {
-        this._iconElement.setAttribute("icon", newValue);
+        this._iconElement.setAttribute("data-vl-icon", newValue);
     }
 
     _typeChangedCallback(oldValue, newValue) {

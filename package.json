@@ -48,7 +48,7 @@
     "vl-ui-icon": "^5.0.0"
   },
   "peerDependencies": {
-    "vl-ui-core": "^5.0.2",
+    "vl-ui-core": "^5.1.2",
     "vl-ui-icon": "^5.0.0"
   },
   "devDependencies": {
