@@ -54,7 +54,7 @@ describe('vl-infoblock', async () => {
     it('als gebruiker kan ik een custom icon kiezen', async () => {
         const iconblock = await vlInfoblockPage.getCustomIconBlock();
         const icon = await iconblock.getIcon();
-        await assert.eventually.equal(icon.getIcon(), 'calendar');
+        await assert.eventually.equal(icon.getType(), 'calendar');
         await assert.eventually.isNull(iconblock.getType());
     });
 
