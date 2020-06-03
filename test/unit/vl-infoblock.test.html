@@ -48,14 +48,14 @@
         let text = 'Dit is een titel';
         infoblock.setAttribute('title', text);
         titleSlotElements = infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements();
-        titleSlotElements[0].textContent.should.equal(text);
-        titleSlotElements.length.should.equal(1);
+        assert.equal(titleSlotElements[0].textContent, text);
+        assert.lengthOf(titleSlotElements, 1);
 
         text = 'Dit is een andere titel';
         infoblock.setAttribute('title', text);
         titleSlotElements = infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements();
-        titleSlotElements[0].textContent.should.equal(text);
-        titleSlotElements.length.should.equal(1);
+        assert.equal(titleSlotElements[0].textContent, text);
+        assert.lengthOf(titleSlotElements, 1);
       });
 
       test('een icoon wordt toegevoegd als het icon attribuut wordt ingevuld', () => {
@@ -85,7 +85,7 @@
 
       test('Een volledig ingevulde infoblock wordt correct weergegeven', () => {
         const infoblock = fixture('vl-infoblock-fixture-volledig-ingevuld');
-        infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent.should.equal('De Titel');
+        assert.equal(infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent, 'De Titel');
         expect(infoblock.shadowRoot.querySelector('#infoblock_icon').getAttribute('icon')).to.equal('bus');
         expect(infoblock.shadowRoot.querySelector('#infoblock_content slot').assignedNodes()[0].textContent)
             .to.equal('Dit is de content van de infoblock');
@@ -113,7 +113,7 @@
       test('Een volledig ingevulde infoblock met een type wordt correct weergegeven', () => {
         const infoblock = fixture('vl-infoblock-fixture-met-type');
 
-        infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent.should.equal('De Titel');
+        assert.equal(infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent, 'De Titel');
         expect(infoblock.shadowRoot.querySelector('#infoblock-element').classList.contains('vl-infoblock')).to.be.true;
         expect(infoblock.shadowRoot.querySelector('#infoblock-element').classList.contains('vl-infoblock--contacts')).to.be.true;
         expect(infoblock.shadowRoot.querySelector('#infoblock_content slot').assignedNodes()[0].textContent).to.equal('Dit is de content van de infoblock');
