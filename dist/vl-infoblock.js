@@ -26,7 +26,7 @@ export class VlInfoblock extends vlElement(HTMLElement) {
   constructor() {
     super(`
         <style>
-            @import /node_modules/vl-ui-infoblock/dist/style.css;
+            @import '/node_modules/vl-ui-infoblock/dist/style.css';
             @import '/node_modules/vl-ui-icon/dist/style.css';
         </style>
 
