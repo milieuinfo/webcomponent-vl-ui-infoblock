@@ -70,7 +70,7 @@
         expect(infoblockIcon.getAttribute('icon')).to.equal(icon);
       });
 
-      test('Elementen binnen een infoblock tags worden correct aan het slot toegevoegd', () => {
+      test('elementen binnen een infoblock tags worden correct aan het slot toegevoegd', () => {
         const infoblock = fixture('vl-infoblock-fixture');
 
         let infoblockContent = infoblock.shadowRoot.querySelector('#infoblock_content slot');
@@ -83,7 +83,7 @@
         expect(infoblockContent.assignedElements()[0]).to.equal(content);
       });
 
-      test('Een volledig ingevulde infoblock wordt correct weergegeven', () => {
+      test('een volledig ingevulde infoblock wordt correct weergegeven', () => {
         const infoblock = fixture('vl-infoblock-fixture-volledig-ingevuld');
         assert.equal(infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent, 'De Titel');
         expect(infoblock.shadowRoot.querySelector('#infoblock_icon').getAttribute('icon')).to.equal('bus');
@@ -92,7 +92,7 @@
       });
 
 
-      test('Via het type attribuut is het mogelijk om vooraf gedefinieerde iconen te tonen.', () => {
+      test('via het type attribuut is het mogelijk om vooraf gedefinieerde iconen te tonen.', () => {
         const infoblock = fixture('vl-infoblock-fixture');
 
         const typeInfoBlock = 'contacts';
@@ -110,7 +110,7 @@
         expect(infoblockElement.classList.contains(typeInfoBlockClass)).to.be.true;
       });
 
-      test('Een volledig ingevulde infoblock met een type wordt correct weergegeven', () => {
+      test('een volledig ingevulde infoblock met een type wordt correct weergegeven', () => {
         const infoblock = fixture('vl-infoblock-fixture-met-type');
 
         assert.equal(infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent, 'De Titel');
@@ -119,13 +119,13 @@
         expect(infoblock.shadowRoot.querySelector('#infoblock_content slot').assignedNodes()[0].textContent).to.equal('Dit is de content van de infoblock');
       });
     
-      test('De titel wordt correct gerenderd via een slot', () => {
+      test('de titel wordt correct gerenderd via een slot', () => {
         const infoblock = fixture('vl-infoblock-fixture-met-title-slot');
         expect(infoblock.shadowRoot.querySelector('slot[name="title"]')).to.exist;
         expect(infoblock.shadowRoot.querySelector('slot[name="title"]').assignedNodes()[0].textContent).to.equal('De Titel');
       });
     
-      test('Wanneer het type wijzigt, mag de oude class niet meer beschikbaar zijn', () => {
+      test('wanneer het type wijzigt, mag de oude class niet meer beschikbaar zijn', () => {
         const infoblock = fixture('vl-infoblock-fixture-met-type');
 
         const typeClassPrefix = 'vl-infoblock--';
@@ -138,7 +138,7 @@
         expect(infoblockElement.classList.contains(typeClassPrefix + 'contacts')).to.be.false;
       });
 
-      test('Wanneer type wordt verwijderd, mag de class niet meer aanwezig zijn', () => {
+      test('wanneer type wordt verwijderd, mag de class niet meer aanwezig zijn', () => {
         const infoblock = fixture('vl-infoblock-fixture-met-type');
         const typeClassPrefix = 'vl-infoblock--';
 

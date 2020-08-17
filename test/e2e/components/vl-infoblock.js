@@ -1,6 +1,6 @@
 const {VlElement} = require('vl-ui-core').Test;
+const {By} = require('vl-ui-core').Test.Setup;
 const {VlIcon} = require('vl-ui-icon').Test;
-const {By} = require('selenium-webdriver');
 
 class VlInfoblock extends VlElement {
   async getTitleSlotElements() {
