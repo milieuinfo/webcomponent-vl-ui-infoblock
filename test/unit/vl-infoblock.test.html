@@ -42,18 +42,18 @@
       test('de titel is ingevuld als het titel attribuut wordt ingevuld', () => {
         const infoblock = fixture('vl-infoblock-fixture');
     
-        let titleSlotElements = infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements();
+        let titleSlotElements = infoblock.shadowRoot.querySelector('slot[name="title"]').assignedElements();
         expect(titleSlotElements).to.be.empty;
     
         let text = 'Dit is een titel';
         infoblock.setAttribute('title', text);
-        titleSlotElements = infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements();
+        titleSlotElements = infoblock.shadowRoot.querySelector('slot[name="title"]').assignedElements();
         assert.equal(titleSlotElements[0].textContent, text);
         assert.lengthOf(titleSlotElements, 1);
 
         text = 'Dit is een andere titel';
         infoblock.setAttribute('title', text);
-        titleSlotElements = infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements();
+        titleSlotElements = infoblock.shadowRoot.querySelector('slot[name="title"]').assignedElements();
         assert.equal(titleSlotElements[0].textContent, text);
         assert.lengthOf(titleSlotElements, 1);
       });
@@ -85,12 +85,10 @@
 
       test('een volledig ingevulde infoblock wordt correct weergegeven', () => {
         const infoblock = fixture('vl-infoblock-fixture-volledig-ingevuld');
-        assert.equal(infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent, 'De Titel');
+        assert.equal(infoblock.shadowRoot.querySelector('slot[name="title"]').assignedElements()[0].textContent, 'De Titel');
         expect(infoblock.shadowRoot.querySelector('#infoblock_icon').getAttribute('icon')).to.equal('bus');
-        expect(infoblock.shadowRoot.querySelector('#infoblock_content slot').assignedNodes()[0].textContent)
-            .to.equal('Dit is de content van de infoblock');
+        expect(infoblock.shadowRoot.querySelector('#infoblock_content slot').assignedNodes()[0].textContent).to.equal('Dit is de content van de infoblock');
       });
-
 
       test('via het type attribuut is het mogelijk om vooraf gedefinieerde iconen te tonen.', () => {
         const infoblock = fixture('vl-infoblock-fixture');
@@ -113,9 +111,9 @@
       test('een volledig ingevulde infoblock met een type wordt correct weergegeven', () => {
         const infoblock = fixture('vl-infoblock-fixture-met-type');
 
-        assert.equal(infoblock.shadowRoot.querySelector('#infoblock_title slot').assignedElements()[0].textContent, 'De Titel');
-        expect(infoblock.shadowRoot.querySelector('#infoblock-element').classList.contains('vl-infoblock')).to.be.true;
-        expect(infoblock.shadowRoot.querySelector('#infoblock-element').classList.contains('vl-infoblock--contacts')).to.be.true;
+        assert.equal(infoblock.shadowRoot.querySelector('slot[name="title"]').assignedNodes()[0].textContent, 'De Titel');
+        expect(infoblock._element.classList.contains('vl-infoblock')).to.be.true;
+        expect(infoblock._element.classList.contains('vl-infoblock--contacts')).to.be.true;
         expect(infoblock.shadowRoot.querySelector('#infoblock_content slot').assignedNodes()[0].textContent).to.equal('Dit is de content van de infoblock');
       });
     

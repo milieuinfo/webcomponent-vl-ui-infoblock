@@ -10,6 +10,10 @@ describe('vl-infoblock', async () => {
     return vlInfoblockPage.load();
   });
 
+  it('WCAG', async () => {
+    await assert.eventually.isFalse(vlInfoblockPage.hasWcagIssues());
+  });
+
   it('als gebruiker kan ik de titel van een infoblock zien', async () => {
     const iconblock = await vlInfoblockPage.getContactBlock();
     const title = await iconblock.getTitleSlotElements();
