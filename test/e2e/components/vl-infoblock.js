@@ -46,7 +46,7 @@ class VlInfoblock extends VlElement {
   }
 
   async _getTitleSlot() {
-    return this.shadowRoot.findElement(By.css('#infoblock_title slot'));
+    return this.shadowRoot.findElement(By.css('slot[name="title"]'));
   }
 
   async _getContentSlot() {
