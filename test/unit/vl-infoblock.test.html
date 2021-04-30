@@ -148,6 +148,11 @@
         expect(infoblockElement.classList.contains(typeClassPrefix)).to.be.false;
         expect(infoblockElement.classList.contains(typeClassPrefix+null)).to.be.false;
       });
+
+      test('de titel is standaard een h2 in kader van WCAG', () => {
+        const infoblock = fixture('vl-infoblock-fixture-volledig-ingevuld');
+        assert.equal(infoblock.shadowRoot.querySelector('slot[name="title"]').assignedElements()[0].tagName, 'H2');
+      });
     });
   </script>
 </body>
